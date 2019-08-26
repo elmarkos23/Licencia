@@ -10,3 +10,8 @@ D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.pdb
 D:\GitHub\Licencia\Licencia\bin\Debug\Newtonsoft.Json.dll
 D:\GitHub\Licencia\Licencia\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.csproj.CopyComplete
+D:\GitHub\Licencia\Licencia\bin\Debug\Licencia.exe.manifest
+D:\GitHub\Licencia\Licencia\bin\Debug\Licencia.application
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.exe.manifest
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.application
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.csprojAssemblyReference.cache

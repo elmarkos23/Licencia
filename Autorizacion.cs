@@ -11,6 +11,5 @@ namespace Licencia
 		public string nombre { get; set; }
 		public DateTime fecha { get; set; }
 		public string CodigoUnico { get; set; }
-		public string CodigoAplicacion { get; set; }
 	}
 }

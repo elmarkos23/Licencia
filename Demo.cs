@@ -21,25 +21,28 @@ namespace Licencia
 		{
 			InitializeComponent();
 			Archivo = "Autorizacion.json";
-			Ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData).ToString(),"Gema");
+			Ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData).ToString(), "Gema");
 
 			if (!Directory.Exists(Ruta))
 			{
 				Directory.CreateDirectory(Ruta);
 			}
-
 		}
 		private void CargarInformacion()
 		{
-			FileInfo fi = new FileInfo(Path.Combine(Ruta,Archivo));
+			FileInfo fi = new FileInfo(Path.Combine(Ruta, Archivo));
 			try
 			{
 				if (fi.Exists)
 				{
-					using (StreamReader sr = File.OpenText(Path.Combine(Ruta,Archivo)))
+					using (StreamReader sr = File.OpenText(Path.Combine(Ruta, Archivo)))
 					{
 						Autorizacion m = JsonConvert.DeserializeObject<Autorizacion>(sr.ReadLine());
-						if (m.CodigoUnico.Equals(Serial()))
+
+						string[] words = m.CodigoUnico.Split('-');
+
+
+						if (words[0].Equals(Serial().ToUpper()))
 						{
 							label1.Text = "SERIAL ACTIVO";
 							button1.Enabled = false;
@@ -64,8 +67,8 @@ namespace Licencia
 		{
 			CargarInformacion();
 		}
-			public static string Serial()
-			{
+		public static string Serial()
+		{
 			try
 			{
 				string HDD = System.Environment.CurrentDirectory.Substring(0, 1);
@@ -73,11 +76,11 @@ namespace Licencia
 				disk.Get();
 				return disk["VolumeSerialNumber"].ToString();
 			}
-			catch 
+			catch
 			{
 				return "NONE";
 			}
-			}
+		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
@@ -85,13 +88,13 @@ namespace Licencia
 			{
 				Autorizacion autorizacion = new Autorizacion();
 				autorizacion.nombre = "Licencia";
-				autorizacion.CodigoUnico = Serial();
+				autorizacion.CodigoUnico = Serial().ToString().ToUpper() + "-" + Guid.NewGuid().ToString().ToUpper();
 				autorizacion.fecha = DateTime.Now;
 
 				string json = JsonConvert.SerializeObject(autorizacion);
 
 				// Create a new file   
-				FileInfo fi = new FileInfo(Path.Combine(Ruta,Archivo));
+				FileInfo fi = new FileInfo(Path.Combine(Ruta, Archivo));
 				using (StreamWriter sw = fi.CreateText())
 				{
 					sw.WriteLine(json);
