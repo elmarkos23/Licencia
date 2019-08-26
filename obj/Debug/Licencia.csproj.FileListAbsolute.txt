@@ -1,0 +1,12 @@
+D:\GitHub\Licencia\Licencia\bin\Debug\Licencia.exe.config
+D:\GitHub\Licencia\Licencia\bin\Debug\Licencia.exe
+D:\GitHub\Licencia\Licencia\bin\Debug\Licencia.pdb
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.Demo.resources
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.Properties.Resources.resources
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.csproj.GenerateResource.cache
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.csproj.CoreCompileInputs.cache
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.exe
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.pdb
+D:\GitHub\Licencia\Licencia\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub\Licencia\Licencia\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub\Licencia\Licencia\obj\Debug\Licencia.csproj.CopyComplete
