@@ -15,19 +15,11 @@ namespace Licencia
 {
 	public partial class Demo : Form
 	{
+		#region Definiciones
 		public string Ruta { get; set; }
 		public string Archivo { get; set; }
-		public Demo()
-		{
-			InitializeComponent();
-			Archivo = "Autorizacion.json";
-			Ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData).ToString(), "Gema");
-
-			if (!Directory.Exists(Ruta))
-			{
-				Directory.CreateDirectory(Ruta);
-			}
-		}
+		#endregion
+		#region Metodos
 		private void CargarInformacion()
 		{
 			FileInfo fi = new FileInfo(Path.Combine(Ruta, Archivo));
@@ -44,18 +36,18 @@ namespace Licencia
 
 						if (words[0].Equals(Serial().ToUpper()))
 						{
-							label1.Text = "SERIAL ACTIVO";
+							label1.Text = Constantes.Day.activo.ToString();
 							button1.Enabled = false;
 						}
 						else
 						{
-							label1.Text = "SERIAL DUPLICADA";
+							label1.Text = Constantes.Day.duplicado.ToString();
 						}
 					}
 				}
 				else
 				{
-					label1.Text = "SERIAL PRUEBA";
+					label1.Text = Constantes.Day.prueba.ToString();
 				}
 			}
 			catch (Exception Ex)
@@ -63,31 +55,34 @@ namespace Licencia
 				Console.WriteLine(Ex.ToString());
 			}
 		}
-		private void Demo_Load(object sender, EventArgs e)
-		{
-			CargarInformacion();
-		}
 		public static string Serial()
 		{
 			try
 			{
 				string HDD = System.Environment.CurrentDirectory.Substring(0, 1);
-				ManagementObject disk = new ManagementObject("win32_logicaldisk.deviceid=\"" + HDD + ":\"");
+				ManagementObject disk = new ManagementObject(""+Constantes.cadena0001+"" + HDD + ":\"");
 				disk.Get();
-				return disk["VolumeSerialNumber"].ToString();
+				return disk[Constantes.cadena0002].ToString();
 			}
 			catch
 			{
 				return "NONE";
 			}
 		}
+		#endregion
+		#region Eventos
+		private void Demo_Load(object sender, EventArgs e)
+		{
+			CargarInformacion();
+		}
+
 
 		private void button1_Click(object sender, EventArgs e)
 		{
 			try
 			{
 				Autorizacion autorizacion = new Autorizacion();
-				autorizacion.nombre = "Licencia";
+				autorizacion.nombre = Constantes.cadena0004;
 				autorizacion.CodigoUnico = Serial().ToString().ToUpper() + "-" + Guid.NewGuid().ToString().ToUpper();
 				autorizacion.fecha = DateTime.Now;
 
@@ -105,5 +100,19 @@ namespace Licencia
 				MessageBox.Show(ex.Message.ToString());
 			}
 		}
+		#endregion
+		#region Constructor
+		public Demo()
+		{
+			InitializeComponent();
+			Archivo = Constantes.cadena0003;
+			Ruta = Path.Combine(Constantes.cadena0006, Constantes.cadena0005);
+
+			if (!Directory.Exists(Ruta))
+			{
+				Directory.CreateDirectory(Ruta);
+			}
+		}
+		#endregion
 	}
 }

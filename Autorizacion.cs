@@ -8,8 +8,10 @@ namespace Licencia
 {
 	public class Autorizacion
 	{
+		#region Atributos
 		public string nombre { get; set; }
 		public DateTime fecha { get; set; }
 		public string CodigoUnico { get; set; }
+		#endregion
 	}
 }
